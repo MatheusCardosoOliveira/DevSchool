@@ -6,7 +6,7 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 import LoadingBar from 'react-top-loading-bar'
 
 import { useState, useEffect, useRef } from 'react'
-import { ContainerConteudo, Barra } from './conteudostyle'
+import { Container, Barra } from './conteudostyle'
 
 import Api from '../../service/api'
 const api = new Api()
@@ -32,7 +32,7 @@ export default function Conteudo() {
     }
 
     async function inserir() {
-        if (idAlterando == 0) {
+        if (idAlterando === 0) {
             let r = await api.inserir( nome, chamada, curso, turma)
 
             if (r.erro)
@@ -98,19 +98,19 @@ export default function Conteudo() {
     }, [])
     
     return (
-        <ContainerConteudo>
+        <Container>
             <ToastContainer />
             <LoadingBar color="red" ref={loading} />
             <div className="container1">
                 <div className="sloga">
-                    <img className="logo" src="/assents/images/chevron-down.svg" alt="" />
+                    <img className="logo" src="/assets/images/chevron-down.svg" alt="" />
                     <div className="titulo"><span>Dev</span> School</div>
                 </div>
                 <div className="vazio">
 
                 </div>
                 <div className="geren">
-                    <div className="opcao1"> Gerenciamento <img className="setaprabaixo" src="/assents/images/chevron-down.svg" alt="" /> </div>
+                    <div className="opcao1"> Gerenciamento <img className="setaprabaixo" src="/assets/images/chevron-down.svg" alt="" /> </div>
                 </div>
                 <div className="alun">
                     <div className="barra1roxo"></div>
@@ -121,22 +121,22 @@ export default function Conteudo() {
                 <div className="cabecalho">
                     <div className="usuario-imagem">  
                         <div className="usuario">
-                            <img src="/assents/images/Cirilops.jpg"/> 
+                            <img src="/assets/images/Cirilops.jpg" alt=""/> 
                             <div className="bullet">3</div>
                         </div>
                         <div className="mensagem-usu"> Olá, Cirilão </div>   
                     </div>
                     <div className="contalunos">
-                        <img className="recarregar" src="/assents/images/refresh.svg" alt="" />
+                        <img className="recarregar" src="/assets/images/refresh.svg" alt="" />
                     </div>
                     <div className="contalunos">
-                        <img className="logout" src="/assents/images/log-out.svg" alt="" />
+                        <img className="logout" src="/assets/images/log-out.svg" alt="" />
                     </div>
                 </div>
                 <div className="cadrastro">
                     <div className="cab"> 
                     <Barra/>
-                    <div className="titulo-alun"> {idAlterando == 0 ? "Novo Aluno" : "Alterando Aluno " + idAlterando}</div>
+                    <div className="titulo-alun"> {idAlterando === 0 ? "Novo Aluno" : "Alterando Aluno " + idAlterando}</div>
                     </div>
                     <div className="cxinputs">
                         <div className="dados">
@@ -145,7 +145,7 @@ export default function Conteudo() {
                             <div className="chamada"> Chamada: <input type="text" value={chamada} onChange={e => setChamada(e.target.value)}/> </div>
                             <div className="turma"> Turma: <input type="text" value={turma} onChange={e => setTurma(e.target.value)}/> </div>
                         </div>
-                        <div className="botao"> <button onClick={inserir}> {idAlterando == 0 ? "Cadastrar" : "Alterar"} </button> </div>
+                        <div className="botao"> <button onClick={inserir}> {idAlterando === 0 ? "Cadastrar" : "Alterar"} </button> </div>
                     </div>
                 </div> 
                 <div className="listaalunos">
@@ -178,15 +178,15 @@ export default function Conteudo() {
                                 <td>{item.nr_chamada}</td>
                                 <td>{item.nm_turma}</td>
                                 <td>{item.nm_curso}</td>
-                                <td className="botao-visivel"> <button onClick={() => editar(item)}> <img src="/assents/images/edit.svg" alt="" /> </button> </td>
-                                <td className="botao-visivel"> <button onClick={() => remover(item.id_matricula)}  > <img src="/assents/images/trash.svg" alt="" /> </button> </td>
+                                <td className="botao-visivel"> <button onClick={() => editar(item)}> <img src="/assets/images/edit.svg" alt="" /> </button> </td>
+                                <td className="botao-visivel"> <button onClick={() => remover(item.id_matricula)}  > <img src="/assets/images/trash.svg" alt="" /> </button> </td>
                             </tr>
                         )}
                     </tbody>
                 </table>
                 </div>
             </div>
-        </ContainerConteudo>
+        </Container>
         
         
     )
