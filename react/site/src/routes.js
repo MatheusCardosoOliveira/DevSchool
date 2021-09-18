@@ -9,7 +9,6 @@ export default function Routes() {
         <BrowserRouter>
             <Switch>
                 <Route path="/" exact={true} component={Alunos} />
-                <Route path="*" component={Error} />
             </Switch>
         </BrowserRouter>
     )
